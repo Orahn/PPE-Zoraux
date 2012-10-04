@@ -5,7 +5,7 @@
 class Params_BDD{
     const USER='root';
     const BDD='zoraux';
-    const HOST='192.168.79.119';
+    const HOST='172.21.4.54';
     const PWD='pwig';
 }
 ?>
