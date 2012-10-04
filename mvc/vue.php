@@ -4,8 +4,8 @@ class MVC_Vue{
     private $_donnees;
     /**
      * Constructeur de la vue
-     * @param type $controleur
-     * @param type $action
+     * @param string - $controleur : controleur de la vue
+     * @param string - $action : action a appeler dans la vue
      */
     function __construct($controleur,$action){
         $this->_donnees=array();
@@ -21,16 +21,16 @@ class MVC_Vue{
     }
     /**
      * Création d'un élément clé=>valeur
-     * @param type $nomAttribut
-     * @param type $valeurAttribut
+     * @param string - $nomAttribut : nom de l'element
+     * @param string/int - $valeurAttribut : valeur de l'element
      */
     function __set($nomAttribut,$valeurAttribut){
         $this->_donnees[$nomAttribut]=$valeurAttribut;
     }
     /**
-     * Permet de récupérer un attribut
-     * @param type $nomAttribut
-     * @return type
+     * Permet de récupérer un attribut en fonction de son nom
+     * @param string $nomAttribut - nom de l'attribut recherche
+     * @return string/int/object
      */
     function __get($nomAttribut){
         return $this->_donnees[$nomAttribut];
@@ -43,7 +43,7 @@ class MVC_Vue{
     }
     /**
      * Permet de placer un header (haut de page) dans une vue
-     * @return string
+     * @return string : code html
      */
     function header(){
         return '<!DOCTYPE html>
@@ -56,7 +56,7 @@ class MVC_Vue{
     }
     /**
      * Permet de placer un footer (bas de page) dans une vue
-     * @return string
+     * @return string : code html
      */
     function footer(){
         return '</body>
@@ -64,7 +64,7 @@ class MVC_Vue{
     }
     /**
      * Permet de placer le menu dans une vue
-     * @return type
+     * @return string : code html
      */
     function menu(){
         return '<center><u><h1 class="titre">'.$this->titre.'</h1></u></center>
@@ -85,12 +85,12 @@ class MVC_Vue{
                 </table>';
     }
     /**
-     * Permet de créer un lien hypertext dans une vue
-     * @param type $controleur
-     * @param type $action
-     * @param type $libelle
-     * @param type $params
-     * @return string
+     * Permet de creer un lien hypertext dans une vue
+     * @param string - $controleur : controleur souhaite dans le lien
+     * @param string - $action : action voulue dans la page ciblee
+     * @param string - $libelle : nom du lien
+     * @param string - $params : parametre(s) a passer dans le lien necessaire dans la page ciblee pour realiser l'action voulue
+     * @return string : code html
      */
     function lien($controleur,$action,$libelle,$params=array()){
         $parametres = '';
