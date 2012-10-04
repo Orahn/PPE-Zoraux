@@ -39,7 +39,7 @@ class MVC_Vue{
      * Affiche la vue
      */
     function display(){
-        include($this->_fichier);
+        /*include($this->_fichier);*/ 
     }
     /**
      * Permet de placer un header (haut de page) dans une vue
@@ -67,7 +67,7 @@ class MVC_Vue{
      * @return type
      */
     function menu(){
-        return '<center><u><h1 class="titre">'.$this->titre.'</h1></u></center>
+        return '<center><u><h1 class="titre">Zoraux</h1></u></center>
                 <br />
                 <table border="0" align="center" class="menu">
                     <tr>
@@ -82,7 +82,7 @@ class MVC_Vue{
                     <tr>
                         <td align="center">menu 4</td>
                     </tr>
-                </table>';
+                </table>';// .$this->titre. pour afficher le titre dans la balise h1 //
     }
     /**
      * Permet de créer un lien hypertext dans une vue
