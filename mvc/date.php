@@ -7,7 +7,7 @@ class MVC_Date{
 	
         /**
          * Constructeur de la classe Date
-         * @param type $date
+         * @param date- $date : date au format americain 'Y-m-d' ou francais 'd/m/Y'
          */
 	function __construct($date){
             if(strpos($date,'-')){
@@ -22,27 +22,26 @@ class MVC_Date{
 		$this->jour = $dateExplose[0];
             }
 	}
-	
         /**
-         * Retourne la date au format dd/mm/yyyy
-         * @return type
+         * Retourne la date au format francais 'd/m/Y'
+         * @return string : date au format francais 'd/m/Y'
          */
+        
 	function fr(){
-                //var_dump($this);
 		return $this->jour.'/'.$this->mois.'/'.$this->annee;
 	}
 	
         /**
-         * Retourne la date au format yyyy-mm-dd
-         * @return type
+         * Retourne la date au format americain 'Y-m-d'
+         * @return string : date au format americain 'Y-m-d'
          */
 	function us(){
 		return $this->annee.'-'.$this->mois.'-'.$this->jour;
 	}
         
         /**
-         * Retourne la date au format dd mmmm yyyy
-         * @return type
+         * Retourne la date au format francais 'd/m/Y'
+         * @return string : date au format francais 'd/m/Y'
          */
         function ecrite(){
             $douzeMois = array('Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre');
@@ -51,7 +50,7 @@ class MVC_Date{
 	
         /**
          * Retourne le jour
-         * @return type
+         * @return string : jour
          */
 	function getJour(){
 			return $this->jour;
@@ -59,15 +58,15 @@ class MVC_Date{
 	
         /**
          * Retourne le mois
-         * @return type
+         * @return string : mois
          */
 	function getMois(){
 			return $this->mois;
 	}
         
         /**
-         * Retourne l'année
-         * @return type
+         * Retourne l'annee
+         * @return string : annee
          */
 	function getAnnee(){
 			return $this->annee;
