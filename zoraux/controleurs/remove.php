@@ -1,5 +1,0 @@
-<?php
-/*
- * Fichier à enlever
- */
-?>
