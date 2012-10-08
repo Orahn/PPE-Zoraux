@@ -1,51 +1,52 @@
 <?php
 
 /**
- * Description of Form
+ * Description de MVC_Formulaire
  * 
- * Principal class
- * @package K_Form
+ * Classe principale
+ * @package MVC_Formulaire
  */
-class K_Form {
+class MVC_Formulaire {
+    
     /**
-     * const to indent HTML code 
+     * Constante pour identer le code
      */
-
     const INDENT = true;
+    
     /**
-     * character added to required field
+     * Le caractère ajouté pour un champ obligatoire
      */
     const CHARACTER_REQUIRED = '*';
 
     /**
-     * store form's elements
-     * @var AssociativeArray(K_FormField) 
+     * Stocke les champs du formulaire
+     * @var AssociativeArray(MVC_FormulaireChamp) 
      */
     private $_fields;
 
     /**
-     * store hidden elements
+     * Stocke les champs cachés
      * @var array 
      */
     private $_hiddens;
 
     /**
-     * store form's attributs
+     * Stocke les attributs des champs
      * @var AssociativeArray
      */
     private $_attributs;
 
     /**
-     * to display buttons 
+     * Pour afficher les boutons 
      * @var boolean true 
      */
     private $_buttons;
 
     /**
-     * Constructor
-     * @param String $name form's name
-     * @param String $action attribute action of the form
-     * @param String $method attribute method of the form
+     * Constructeur de la classe MVC_Formulaire
+     * @param String $name nom du formulaire
+     * @param String $action attribut action du formulaire
+     * @param String $method attribut méthode du formulaire
      */
     public function __construct($name, $action = 'index.php', $method = "POST") {
         $this->_fields = array();
@@ -59,7 +60,7 @@ class K_Form {
     }
 
     /**
-     *  return name attribut
+     * Retourne l'attribut nom
      * @return String
      */
     public function getName() {
@@ -67,8 +68,8 @@ class K_Form {
     }
 
     /**
-     * method to hide submit and reset buttons 
-     * @return K_Form
+     * Permet de cacher les boutons envoyer et reset
+     * @return MVC_Formulaire
      */
     public function noButtons() {
         $this->_buttons = false;
@@ -76,7 +77,7 @@ class K_Form {
     }
 
     /**
-     * add an attribute to the form
+     * Permet d'ajouter un attribut au formulaire
      * @param String $key 
      * @param String $value 
      * @return mixed
@@ -86,33 +87,33 @@ class K_Form {
     }
 
     /**
-     * add a field to the form
-     * @param K_FormField $field
-     * @return K_FormField
+     * Permet d'ajouter un champ au formulaire
+     * @param MVC_FormulaireChamp $field
+     * @return MVC_FormulaireChamp
      */
     private function addField(K_FormField $field) {
         return $this->_fields[$field->getName()] = $field;
     }
 
     /**
-     * Add an input field to the form
+     * Permet d'ajouter un champ input au formulaire
      * @param String $name
      * @param array $attributs
      * @param String $label 
-     * @return K_FormField
+     * @return MVC_FormulaireChamp
      */
     private function addInput($name, $attributs, $label) {
         $attributs['name'] = $name;
         return $this->addField(
-                        new K_FormField('input', $attributs, $label)
+                        new MVC_FormulaireChamp('input', $attributs, $label)
         );
     }
 
     /**
-     * magic method to add hidden field
+     * Méthode magique pour ajouter un champ caché
      * @param String $key
      * @param String $value
-     * @return K_FormField
+     * @return MVC_FormulaireChamp
      * @example $form->login='userLogin';
      */
     public function __set($key, $value) {
@@ -120,14 +121,14 @@ class K_Form {
     }
 
     /**
-     * Add an hidden field to the Form
+     * Permet d'ajouter un champ caché au formulaire
      * @param String $key
      * @param String $value
-     * @return K_FormField
+     * @return MVC_FormulaireChamp
      * @example $form->addHidden('var','test');
      */
     public function addHidden($key, $value) {
-        $hidden = new K_FormField(
+        $hidden = new MVC_FormulaireChamp(
                         'input',
                         array('name' => $key, 'type' => 'hidden', 'value' => $value)
         );
@@ -135,11 +136,11 @@ class K_Form {
     }
 
     /**
-     * Add a text input to the form
+     * Permet d'ajouter un champ texte au formulaire
      * @param String $name
      * @param array $attributs
      * @param String $label
-     * @return K_FormField 
+     * @return MVC_FormulaireChamp 
      * @example $form->addText('date',array('size'=>10),'Date');
      * @example $form->addText('login',array(),'Username');
      */
@@ -150,25 +151,25 @@ class K_Form {
     }
 
     /**
-     * add a file field to the form
+     * Permet d'ajouter un champ selecteur de fichiers au formulaire
      * @param String $name
      * @param array $attributs
      * @param String $label
-     * @return K_FormField 
+     * @return MVC_FormulaireChamp 
      */
     public function addFile($name, $attributs = array(), $label = '') {
         $attributs['type'] = 'file';
         $attributs['name'] = $name;
-        $this->_attributs['enctype'] = 'multipart/form-data';
+        $this->_attributs['enctype'] = 'multipart/form-data';   //Obligatoire pour l'upload
         return $this->addInput($name, $attributs, $label);
     }
 
     /**
-     * Add a password input to the form
+     * Permet d'ajouter un champ password au formulaire
      * @param String $name
      * @param array $attributs
      * @param String $label
-     * @return K_FormField 
+     * @return MVC_FormulaireChamp 
      */
     public function addPassword($name, $attributs = array(), $label = '') {
         $attributs['name'] = $name;
@@ -177,55 +178,55 @@ class K_Form {
     }
 
     /**
-     * Add a textarea to the form
+     * Permet d'ajouter un champ textarea au formulaire
      * @param String $name
      * @param array $attributs
      * @param String $label
-     * @return K_FormField 
+     * @return MVC_FormulaireChamp
      */
     public function addTextarea($name, $attributs = array(), $label = '') {
         $attributs['name'] = $name;
         return $this->addField(
-                        new K_FormField('textarea', $attributs, $label)
+                        new MVC_FormulaireChamp('textarea', $attributs, $label)
         );
     }
 
     /**
-     * Add a select to the form
+     * Permet d'ajouter un champ select au formulaire
      * @param String $name
      * @param array $list
      * @param String $attributs
      * @param String $label
-     * @return K_FormField 
+     * @return MVC_FormulaireChamp
      */
     public function addSelect($name, $list = array(), $attributs = array(), $label = '') {
         $attributs['name'] = $name;
         $attributs['_list'] = $list;
         return $this->addField(
-                        new K_FormField('select', $attributs, $label)
+                        new MVC_FormulaireChamp('select', $attributs, $label)
         );
     }
 
     /**
-     * add a checkbox to the form
+     * Permet d'ajouter un champ checkbox au formulaire
      * @param String $name
      * @param array $list
      * @param array $attributs
      * @param String $label
-     * @return K_FormField
+     * @return MVC_FormulaireChamp
      */
     public function addCheckbox($name, $list = array(), $attributs = array(), $label = '') {
         $attributs['name'] = $name;
         $attributs['_list'] = $list;
         return $this->addField(
-                        new K_FormField('checkbox', $attributs, $label)
+                        new MVC_FormulaireChamp('checkbox', $attributs, $label)
         );
     }
 
     /**
-     * Add a submit button
+     * Permet d'ajouter un bouton submit au formulaire
      * @param array $attributs
-     * @return K_FormField
+     * @return MVC_FormulaireChamp
      */
     public function addSubmit($attributs = array()) {
         $attributs['type'] = 'submit';
@@ -233,9 +234,9 @@ class K_Form {
     }
 
     /**
-     * Add a reset button
+     * Permet d'ajouter un bouton reset au formulaire
      * @param array $attributs
-     * @return K_FormField 
+     * @return MVC_FormulaireChamp
      */
     public function addReset($attributs = array()) {
         $attributs['type'] = 'reset';
@@ -243,9 +244,9 @@ class K_Form {
     }
 
     /**
-     * return the field with the given name
+     * Retourne un champ grâce à son attribut nom
      * @param String $name
-     * @return K_FormField 
+     * @return MVC_FormulaireChamp
      */
     public function get($name) {
         if (isset($this->_fields[$name])) {
@@ -253,20 +254,20 @@ class K_Form {
         } elseif (isset($this->_hiddens[$name])) {
             return $this->_hiddens[$name];
         } else {
-            throw new Exception("Index undefined " . $name, 1);
+            throw new Exception("Index introuvable " . $name, 1);
         }
     }
 
     /**
-     * methods to display header form 
+     * Permet d'afficher le header (haut) du formulaire
      * @return String
      */
     public function header() {
-        return '<form ' . K_Form::attrToHTML($this->_attributs) . '>';
+        return '<form ' . MVC_Formulaire::attrToHTML($this->_attributs) . '>';
     }
 
     /**
-     * method to close form tag
+     * Permet d'afficher le footer (la fin) du formulaire
      * @return string 
      */
     public function footer() {
@@ -274,23 +275,23 @@ class K_Form {
     }
 
     /**
-     * generate html to display form with a table
+     * Permet de générer le HTML pour afficher le formulaire dans un tableau
      * @param array $attributs
      * @return string 
      */
     public function table($attributs = array()) {
         $html = $this->header();
-        $html.=K_Form::INDENT ? "\n" : '';
-        /* hiddens fields */
+        $html.=MVC_Formulaire::INDENT ? "\n" : '';
+        /* champs cachés */
         foreach ($this->_hiddens as $hiddenElement) {
             $html.=$hiddenElement;
         }
-        /* visible fields */
-        $html .= '<table' . K_Form::attrToHTML($attributs) . '><tbody>';
-        $html.=K_Form::INDENT ? "\n" : '';
+        /* champs visibles */
+        $html .= '<table' . MVC_Formulaire::attrToHTML($attributs) . '><tbody>';
+        $html.=MVC_Formulaire::INDENT ? "\n" : '';
         foreach ($this->_fields as $field) {
             $html.=$field->table();
-            $html.=K_Form::INDENT ? "\n" : '';
+            $html.=MVC_Formulaire::INDENT ? "\n" : '';
         }
         if ($this->_buttons) {
             $submit = $this->addSubmit();
@@ -302,30 +303,30 @@ class K_Form {
             $this->remove($submit);
             $this->remove($reset);
         }
-        $html.=K_Form::INDENT ? "\n" : '';
+        $html.=MVC_Formulaire::INDENT ? "\n" : '';
         $html.='</tbody></table>';
-        $html.=K_Form::INDENT ? "\n" : '';
+        $html.=MVC_Formulaire::INDENT ? "\n" : '';
         $html.=$this->footer();
         return $html;
     }
 
     /**
-     * display the form inlin
-     * @param boolean $br true: a br is added after each field
+     * Permet d'afficher le formulaire "inline"
+     * @param boolean $br true: un br est ajouté après chaque champ
      * @return String 
      */
     public function inline($br = true) {
         $html = $this->header();
         //$html.=K_Form::INDENT?"\n":'';
-        /* hiddens fields */
+        /* champs cachés */
         foreach ($this->_hiddens as $hiddenElement) {
             $html.=$hiddenElement;
         }
-        /* visible fields */
-        $html.=K_Form::INDENT ? "\n" : '';
+        /* champs visibles */
+        $html.=MVC_Formulaire::INDENT ? "\n" : '';
         foreach ($this->_fields as $field) {
             $html.=$field->inline() . '<br />';
-            $html.=K_Form::INDENT ? "\n" : '';
+            $html.=MVC_Formulaire::INDENT ? "\n" : '';
         }
         if ($this->_buttons) {
             $submit = $this->addSubmit();
@@ -335,14 +336,14 @@ class K_Form {
             $this->remove($submit);
             $this->remove($reset);
         }
-        $html.=K_Form::INDENT ? "\n" : '';
+        $html.=MVC_Formulaire::INDENT ? "\n" : '';
         $html.=$this->footer();
         return $html;
     }
     /**
-     * Remove a field from the Form
+     * Permet d'enlever un champ du formulaire
      * @param FormField $field
-     * @return \K_Form 
+     * @return \MVC_Formulaire
      */
     function remove($field){
         unset($this->_fields[$field->getName()]);
@@ -350,7 +351,7 @@ class K_Form {
         return $this;
     }
     /**
-     * static method to display attributs
+     * Méthode statique pour afficher les attributs
      * @param array $attr
      * @return string 
      */
@@ -365,9 +366,9 @@ class K_Form {
     }
 
     /**
-     * to populate the form with an object
+     * Permet de peupler le formulaire avec un objet
      * @param Object $object 
-     * @return K_Form
+     * @return MVC_Formulaire
      */
     private function populateObject($object) {
         foreach ($this->_fields as $element) {
@@ -380,9 +381,9 @@ class K_Form {
     }
 
     /**
-     * to populate the form with an array
+     * Permet de peupler le formulaire avec un tableau
      * @param type $array
-     * @return K_Form
+     * @return MVC_Formulaire
      */
     private function populateArray($array) {
         foreach ($this->_fields as $element) {
@@ -395,7 +396,7 @@ class K_Form {
     }
 
     /**
-     * to populate the form with an associative array or an object
+     * Permet de peupler le formulaire avec un objet ou un tableau associatif
      * @param type $values
      * @return type
      * @throws Exception 
@@ -406,7 +407,7 @@ class K_Form {
         } elseif (is_object($values)) {
             return $this->populateObject($values);
         } else {
-            $e = new Exception('K_Form::populate : param must be an associative array or an object');
+            $e = new Exception('MVC_Formulaire::populate : le paramètre doit être un objet ou un tableau associatif');
             throw $e;
         }
     }

@@ -1,39 +1,40 @@
 <?php
 
 /**
- * Description of FormField
+ * Description de FormulaireChamp
  * 
- * used with Form
- * @package K_Form
+ * Utilisé avec MVC_Formulaire
+ * 
+ * @package MVC_FormulaireChamp
  */
-class K_FormField {
+class MVC_FormulaireChamp {
 
     /**
-     * label
+     * libellé
      * @var string
      */
     private $_label;
 
     /**
-     * attributes
+     * attributs
      * @var array
      */
     private $_attr;
 
     /**
-     * tag
+     * TAG
      * @var string
      */
     private $_tag;
 
     /**
-     * to define a required field
+     * Pour définir un champ obligatoire
      * @var boolean
      */
     private $_required;
 
     /**
-     * Constructeur
+     * Constructeur de la classe MVC_FormulaireChamp
      * @param string $tag
      * @param array $attributs
      * @param string $label 
@@ -45,7 +46,7 @@ class K_FormField {
         $this->_required = false;
     }
     /**
-     * Add a character to show a required field 
+     * Ajoute un caractère pour montrer un champ obligatoire
      * @return FormField
      */
     function required() {
@@ -54,8 +55,8 @@ class K_FormField {
     }
 
     /**
-     * return the field id attribute
-     * if the id attribute is not defined, one is create
+     * Retourne l'attribut id du champ
+     * Si l'id n'est pas défini, il sera créé automatiquement avec uniqid()
      * @return String 
      */
     function getId() {
@@ -66,7 +67,7 @@ class K_FormField {
     }
 
     /**
-     * return name attribut
+     * Retourne l'attribut nom du champ
      * @return string
      */
     function getName() {
@@ -74,7 +75,7 @@ class K_FormField {
     }
 
     /**
-     * return the label
+     * Retourne le libellé du champ
      * @return string
      */
     function getLabel() {
@@ -82,7 +83,7 @@ class K_FormField {
     }
 
     /**
-     * set an attribute
+     * Permet de définir un attribut
      * @param string $attr
      * @param string $value 
      */
@@ -91,7 +92,7 @@ class K_FormField {
     }
 
     /**
-     * test the attribute existence
+     * Teste l'existence d'un attribut
      * @param String $attr
      * @return Boolean 
      */
@@ -100,7 +101,7 @@ class K_FormField {
     }
 
     /**
-     * generate the HTML string field
+     * Permet de générer le HTML en string d'un champ
      * @return string
      */
     public function __toString() {
@@ -109,15 +110,15 @@ class K_FormField {
     }
 
     /**
-     * generate the HTML string for an input field
+     * Permet de générer le HTML d'un champ input
      * @return string
      */
     private function toStringInput() {
-        return '<input' . K_Form::attrToHTML($this->_attr) . ' />';
+        return '<input' . MVC_Formulaire::attrToHTML($this->_attr) . ' />';
     }
 
     /**
-     * generate the HTML string for an textarea field
+     * Permet de générer le HTML d'un champ textarea
      * @return string
      */
     private function toStringTextarea() {
@@ -128,11 +129,11 @@ class K_FormField {
             $_value = '';
         }
 
-        return '<textarea' . K_Form::attrToHTML($this->_attr) . ' >' . $_value . '</textarea>';
+        return '<textarea' . MVC_FormulaireChamp::attrToHTML($this->_attr) . ' >' . $_value . '</textarea>';
     }
 
     /**
-     * generate the HTML string for a select field
+     * Permet de générer le HTML d'un champ select
      * @return string 
      */
     private function toStringSelect() {
@@ -146,7 +147,7 @@ class K_FormField {
         $list = $this->_attr['_list'];
         unset($this->_attr['list']);
 
-        $html = '<select ' . K_Form::attrToHTML($this->_attr) . '>';
+        $html = '<select ' . MVC_Formulaire::attrToHTML($this->_attr) . '>';
         foreach ($list as $val => $label) {
             if ($val == $_value) {
                 $html.='<option value="' . $val . '" selected>' . $label . '</option>';
@@ -159,7 +160,7 @@ class K_FormField {
     }
 
     /**
-     * generate the HTML string for an input checkbox field
+     * Permet de générer le HTML d'un champ checkbox
      * @return string 
      */
     private function toStringCheckbox() {
@@ -189,14 +190,14 @@ class K_FormField {
                 unset($this->_attr['checked']);
             }
             $html.='<label for="' . $id.'_'.$val. '">';
-            $html.='<input  type="checkbox" ' . K_Form::attrToHTML($this->_attr) .' id="'.$id.'_'.$val.'" value="' . $val . '"> ';
+            $html.='<input  type="checkbox" ' . MVC_Formulaire::attrToHTML($this->_attr) .' id="'.$id.'_'.$val.'" value="' . $val . '"> ';
             $html.= $label . '</label>';
         }
         return $html;
     }
 
     /**
-     * generate the HTML string for the field label
+     * Permet de générer le HTML d'un champ label
      * @return string 
      */
     function labelToString() {
@@ -215,7 +216,7 @@ class K_FormField {
     }
 
     /**
-     * generate the HTML string to display the form in a table
+     * Permet de générer le HTML pour placer le formulaire dans un tableau
      * @return string 
      */
     function table() {
@@ -226,7 +227,7 @@ class K_FormField {
                 . '</td></tr>';
     }
     /**
-     * generate the HTML string to display form fields inline
+     * Permet de générer le HTML pour afficher les champs du formulaire "inline"
      * @return String
      */
     function inline() {
