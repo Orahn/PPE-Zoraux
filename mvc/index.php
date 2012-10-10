@@ -34,7 +34,7 @@ $controleur->vue=$vue;
 /*$controleur->$action();*/
 /* Affichage de la vue */
 echo $vue->header();
-echo $vue->menu();
+echo $vue->authentification();
 $vue->display();
 echo $vue->footer();
 
