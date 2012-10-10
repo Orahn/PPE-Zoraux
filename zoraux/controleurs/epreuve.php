@@ -57,8 +57,8 @@ class Zoraux_Controleurs_Epreuve {
     function supprimerEpreuve(){
         $tableEpreuves=new Zoraux_Modeles_Epreuve();
         if(isset($_GET['id'])){
-            //Si l'id n'est pas transmis par la methode GET, on considere qu'une erreur est survenue
-            //Alors on ne fait rien
+            //Si l'id n'est pas transmis par la methode GET, on considere qu'une erreur est survenue, alors on ne fait rien
+            //Sinon, on peut supprimer l'epreuve souhaitee
             $epreuve=$tableEpreuves->get($_GET['id']);
             $epreuve->supprimer();
         }
