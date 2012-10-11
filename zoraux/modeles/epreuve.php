@@ -9,13 +9,14 @@ class Zoraux_Modeles_Epreuve extends MVC_Modele {
      * @return Zoraux_Modeles_EpreuveEnregistrement : Nouvel epreuve vide cree
      */
     function newEpreuve(){
-        $epreuve = new Zoraux_Modeles_EpreuveEnregistrement();
+        $epreuve = $this.newEnregistrement();
+        /*$epreuve = new Zoraux_Modeles_EpreuveEnregistrement();
         $epreuve->id=null;
         $epreuve->libelle=null;
         $epreuve->dureeLibre=null;
         $epreuve->dureePassage=null;
         $epreuve->dureePreparation=null;
-        $epreuve->classe_id=null;
+        $epreuve->classe_id=null;*/
         return $epreuve;
     }
 }
