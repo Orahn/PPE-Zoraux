@@ -1,8 +1,6 @@
 <?php
 
 class Zoraux_Controleurs_Eleves {
-     protected $_table='eleve';
-     
      /**
      * Formulaire de saisie d'un élève
      */
