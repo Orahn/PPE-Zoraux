@@ -2,14 +2,6 @@
 
 class Zoraux_Controleurs_Salle {
     /**
-     * Recupere la liste de toutes les classes
-     */
-    function listeSalles(){
-        $tableSalles=new Zoraux_Modeles_Salle();
-        $salles=$tableSalles->liste();
-        $this->vue->salles=$salles;
-    }
-    /**
      * Forme une salle selon s'il s'agit d'une nouvelle salle ou d'une salle existante
      * (Sert a remplir les champs d'un formulaire, sans devoir faire deux formulaires differents pour une edition ou un ajout)
      */
