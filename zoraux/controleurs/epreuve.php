@@ -45,7 +45,7 @@ class Zoraux_Controleurs_Epreuve {
             $epreuve=$tableEpreuves->get($_POST['id']);
         }
         $epreuve->libelle=$_POST['libelle'];
-        $epreuve->dureeLibre=$_POST['dureeLibre'];
+        $epreuve->dureeLibreAvant=$_POST['dureeLibreAvant'];
         $epreuve->dureePassage=$_POST['dureePassage'];
         $epreuve->dureePreparation=$_POST['dureePreparation'];
         $epreuve->classe_id=$_POST['classe_id'];
