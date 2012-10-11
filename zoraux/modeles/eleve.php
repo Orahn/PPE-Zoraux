@@ -1,6 +1,7 @@
 <?php
 
 class Zoraux_Modeles_Eleve extends MVC_Modele {
+
     protected $_table='eleve';
     protected $_modeleEnregistrement='Zoraux_Modeles_EleveEnregistrement';
 
