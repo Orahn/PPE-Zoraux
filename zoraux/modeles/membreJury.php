@@ -10,6 +10,9 @@ class Zoraux_Modeles_MembreJury extends MVC_Modele {
      */
     function newMembreJury(){
         $membreJury = $this->newEnregistrement();
+        $membreJury->professeur=0;
+        $membreJury->professionnel=0;
+        $membreJury->autre=0;
         return $membreJury;
     }
 }
