@@ -9,7 +9,7 @@ class Zoraux_Modeles_Epreuve extends MVC_Modele {
      * @return Zoraux_Modeles_EpreuveEnregistrement : Nouvel epreuve vide cree
      */
     function newEpreuve(){
-        $epreuve = $this.newEnregistrement();
+        $epreuve = $this->newEnregistrement();
         /*$epreuve = new Zoraux_Modeles_EpreuveEnregistrement();
         $epreuve->id=null;
         $epreuve->libelle=null;
