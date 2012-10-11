@@ -15,7 +15,7 @@ class Zoraux_Modeles_EpreuveEnregistrement extends MVC_ModeleEnregistrement  {
     /**
      * Recupere la liste des epreuves passees par une classe dont l'id est passe en parametre par la methode GET
      */
-    function listeClasse(){
+    function listeEpreuvesClasse(){
         $tableClasses=new Zoraux_Modeles_Classe();
         $id=$_GET['id'];
         $classe=$tableClasses->get($id);
