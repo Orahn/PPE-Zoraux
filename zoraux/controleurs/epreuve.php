@@ -1,7 +1,7 @@
 <?php
 
 class Zoraux_Controleurs_Epreuve {
-        /**
+    /**
      * Forme une epreuve selon s'il s'agit d'une nouvelle epreuve ou d'une epreuve existante
      * (Sert a remplir les champs d'un formulaire, sans devoir faire deux formulaires differents pour une edition ou un ajout)
      */
