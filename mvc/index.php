@@ -22,7 +22,7 @@ if(isset($_GET['controleur']) && isset($_GET['action'])){
     //création de la vue
     $action=$_POST['action'];
 }else{
-    $controleurNom='blog_controleurs_accueil';
+    $controleurNom='zoraux_controleurs_accueil';
     $controleur=new $controleurNom();
     $action='principale';
 }
@@ -31,7 +31,7 @@ if(isset($_GET['controleur']) && isset($_GET['action'])){
 $vue=new MVC_Vue($controleurNom,$action);
 $controleur->vue=$vue;
 /* Appel de l'action */
-$controleur->$action();
+/*$controleur->$action();*/
 /* Affichage de la vue */
 echo $vue->header();
 echo $vue->menu();
