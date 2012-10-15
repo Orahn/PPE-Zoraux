@@ -1,6 +1,7 @@
 <?php
 
 class Zoraux_Modeles_Classe extends MVC_Modele {
+<<<<<<< HEAD
     
     protected $_table='classe';
     protected $_modeleEnregistrement='Zoraux_Modeles_ClasseEnregistrement';
@@ -16,3 +17,8 @@ class Zoraux_Modeles_Classe extends MVC_Modele {
         return $classe;
     }
 }
+=======
+    protected $_table='classe';
+    protected $_modeleEnregistrement='Zoraux_Modeles_ClasseEnregistrement';
+}
+>>>>>>> 2aebf3fba90838e58212563e6c4d1b126ee1a975
