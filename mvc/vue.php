@@ -67,7 +67,7 @@ class MVC_Vue{
      * @return type
      */
     function menu(){
-        return '<center><u><h1 class="titre">Zoraux</h1></u></center>
+        return '<center><u><h1 class="titre">'.$this->titre.'</h1></u></center>
                 <br />
                 <table border="0" align="center" class="menu">
                     <tr>
@@ -82,23 +82,24 @@ class MVC_Vue{
                     <tr>
                         <td align="center">menu 4</td>
                     </tr>
-                </table>';// .$this->titre. pour afficher le titre dans la balise h1 //
+                </table>';
     }
-    /**
-     * Permet de créer un lien hypertext dans une vue
-     * @param type $controleur
-     * @param type $action
-     * @param type $libelle
-     * @param type $params
-     * @return string
-     */
-    function lien($controleur,$action,$libelle,$params=array()){
-        $parametres = '';
-        foreach($params as $cle=>$valeur){
-            $parametres.='&'.$cle.'='.$valeur.'';
+        /**
+         * Permet de créer un lien hypertext dans une vue 
+         * On précisera le contrôleur, l'action, le libellé affiché et les paramètres dans un tableau associatif
+         * @param type $controleur
+         * @param type $action
+         * @param type $libelle
+         * @param type $params
+         * @return string
+         */
+        function lien($controleur,$action,$libelle,$params=array()){
+            $parametres = '';
+            foreach($params as $cle=>$valeur){
+                $parametres.='&'.$cle.'='.$valeur.'';
+            }
+            $retour = '<a class="lien" href="index.php?controleur='.$controleur.'&action='.$action.$parametres.'">'.$libelle.'</a>';
+
+            return $retour;
         }
-        $retour = '<a class="lien" href="index.php?controleur='.$controleur.'&action='.$action.$parametres.'">'.$libelle.'</a>';
-        
-        return $retour;
-    }
 }
