@@ -4,4 +4,3 @@
     include('./params/params_chemins.php');
     include('./params/params_bdd.php');
     include(Params_Chemins::MVC.'index.php');
-?>
