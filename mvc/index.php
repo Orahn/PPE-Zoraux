@@ -22,19 +22,17 @@ if(isset($_GET['controleur']) && isset($_GET['action'])){
     //création de la vue
     $action=$_POST['action'];
 }else{
-    $controleurNom='zoraux_controleurs_accueil';
+    $controleurNom='zoraux_controleurs_login';
     $controleur=new $controleurNom();
-    $action='principale';
+    $action='auth';
 }
 
-/* Création de la vue */
 $vue=new MVC_Vue($controleurNom,$action);
 $controleur->vue=$vue;
-/* Appel de l'action */
+//appel de l'action
 $controleur->$action();
-/* Affichage de la vue */
+//affichage de la vue
 echo $vue->header();
-echo $vue->authentification();
 $vue->display();
 echo $vue->footer();
 

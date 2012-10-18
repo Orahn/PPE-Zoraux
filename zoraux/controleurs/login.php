@@ -1,11 +1,10 @@
 <?php
-
-class Zoraux_Controleurs_Accueil {
+class Zoraux_Controleurs_Login {
 
     public $vue;
     
-    function principale(){
+    function auth(){
         $this->vue->titre='Zoraux';
     }
-
+    
 }

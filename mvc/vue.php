@@ -87,8 +87,16 @@ class MVC_Vue{
                     <!-- Login pages styles -->
                     <link rel="stylesheet" media="screen" href="css/login.css?v=1">
 
-                    <!-- JavaScript at bottom except for Modernizr -->
+                    <!-- JavaScript -->
+                    <script src="js/libs/jquery-1.7.2.min.js"></script>
                     <script src="js/libs/modernizr.custom.js"></script>
+                    <script src="js/setup.js"></script>
+
+                    <!-- Template functions -->
+                    <script src="js/developr.input.js"></script>
+                    <script src="js/developr.message.js"></script>
+                    <script src="js/developr.notify.js"></script>
+                    <script src="js/developr.tooltip.js"></script>
 
                     <!-- For Modern Browsers -->
                     <link rel="shortcut icon" href="img/favicons/favicon.png">
@@ -123,6 +131,7 @@ class MVC_Vue{
             </head>
                 <body>';
     }
+   
     /**
      * Permet de placer un footer (bas de page) dans une vue
      * @return string

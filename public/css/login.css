@@ -20,7 +20,7 @@ body {
 
 /* Layout */
 #container {
-	width: 320px;
+	width: 380px;
 	padding: 0 20px;
 	margin: 0 auto;
 	text-align: left;
@@ -232,7 +232,7 @@ form {
 	/* Animation styles */
 	.js-login #container {
 		position: absolute;
-		top: 50%;
+		top: 35%;
 		left: 50%;
 		padding: 0;
 		margin-left: -140px;
