@@ -24,4 +24,19 @@ class Zoraux_Modeles_ClasseEnregistrement extends MVC_ModeleEnregistrement{
         $epreuve=$tableEpreuves->get($this->classe_id);
         return $epreuve;
     }
+    
+    /**
+     * Liste les classes par professeurs
+     */
+    
+    function listeProfesseur(){
+        $tableProfesseurs=new Zoraux_Modeles_MembreJury();
+        $id=$_GET['id'];
+        $professeur=$tableProfesseurs->get($id);
+        $this->vue->auteur=$professeur;
+        $tableClasses=new Zoraux_Modeles_Classe();
+        $classes=$tableClasses->where('id=?',array($id));
+        $this->vue->articles=$classes;
+    }
+    
 }
