@@ -91,7 +91,7 @@ class MVC_Formulaire {
      * @param MVC_FormulaireChamp $field
      * @return MVC_FormulaireChamp
      */
-    private function addField(K_FormField $field) {
+    private function addField(MVC_FormulaireChamp $field) {
         return $this->_fields[$field->getName()] = $field;
     }
 

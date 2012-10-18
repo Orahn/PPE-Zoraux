@@ -29,157 +29,6 @@ $(document).ready(function(){
     maxHeight = false,
     blocHeight;
     
-    $('#form-login').submit(function(event){
-        // Values
-        var login = $.trim($('#login').val()),
-                pass = $.trim($('#pass').val());
-
-        // Check inputs
-        if (login.length === 0){
-                // Display message
-                displayError('Veuillez entrer votre identifiant');
-                return false;
-        }else if (pass.length === 0){
-                // Remove empty login message if displayed
-                formWrapper.clearMessages('Veuillez entrer votre identifiant');
-
-                // Display message
-                displayError('Veuillez entrer votre mot de passe');
-                return false;
-        }else{
-                // Remove previous messages
-                formWrapper.clearMessages();
-
-                // Show progress
-                displayLoading('Recherche des informations...');
-
-                // Stop normal behavior
-                event.preventDefault();
-
-                 $.ajax({
-                                url:'????????????????????????',
-                 		data: {
-                 			login:	login,
-                 			pass:	pass
-                 		},
-                 		success: function(data){
-                                        
-                 			if (data=="success"){
-                 				document.location.href = 'index.php?controleur=zoraux_controleurs_accueil&action=principale';
-                 			}else{
-                 				formWrapper.clearMessages();
-                 				displayError('Utilisateur ou mot de passe invalide, veuillez réessayer');
-                 			}
-                 		},
-                 		error: function(){
-                 			formWrapper.clearMessages();
-                 			displayError('Erreur de connexion avec le serveur');
-                 		}
-                 });
-                 
-
-                // Simulate server-side check
-                setTimeout(function() {
-                        document.location.href = './'
-                }, 2000);
-        }
-});
-
-/*
- * Password recovery
- */
-$('#form-password').submit(function(event){
-        // Values
-        var mail = $.trim($('#mail').val());
-
-        // Check inputs
-        if (mail.length === 0){
-                // Display message
-                displayError('Veuillez entrer votre email');
-        }else if (!/^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(mail)){
-                // Remove empty email message if displayed
-                formWrapper.clearMessages('Veuillez entrer votre email');
-
-                // Display message
-                displayError('Email invalide');
-                return false;
-        }else{
-                // Remove previous messages
-                formWrapper.clearMessages();
-
-                // Show progress
-                displayLoading('Recherche des informations...');
-
-                // Stop normal behavior
-                event.preventDefault();
-
-                /*
-                 * This is where you may do your AJAX call
-                 */
-
-                // Simulate server-side check
-                setTimeout(function() {
-                        document.location.href = './'
-                }, 2000);
-        }
-});
-
-/*
- * Register
- */
-$('#form-register').submit(function(event){
-        // Values
-        var name = $.trim($('#name-register').val()),
-                mail = $.trim($('#mail-register').val()),
-                login = $.trim($('#login-register').val()),
-                pass = $.trim($('#pass-register').val()),
-                secondname = $.trim($('#secondname-register').val());
-
-        // Remove previous messages
-        formWrapper.clearMessages();
-
-        // Check inputs
-        if (name.length === 0){
-                // Display message
-                displayError('Veuillez entrer votre nom');
-                return false;
-        }else if (secondname.length === 0){
-                displayError('Veuillez entrer votre prénom');
-                return false;
-        }else if (mail.length === 0){
-                // Display message
-                displayError('Veuillez entrer votre email');
-                return false;
-        }else if (!/^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(mail)){
-                // Display message
-                displayError('Email invalide');
-                return false;
-        }else if (login.length === 0){
-                // Display message
-                displayError('Veuillez entrer votre identifiant');
-                return false;
-        }else if (pass.length === 0){
-                // Display message
-                displayError('Veuillez entrer votre mot de passe');
-                return false;
-        }else{
-                // Show progress
-                displayLoading('Inscription...');
-
-                // Stop normal behavior
-                event.preventDefault();
-
-                /*
-                 * This is where you may do your AJAX call
-                 */
-
-                // Simulate server-side check
-                setTimeout(function() {
-                        document.location.href = './'
-                }, 2000);
-        }
-});
-
 forms.each(function(i){
             var form = $(this),
                     height = form.outerHeight(),
@@ -441,8 +290,7 @@ forms.each(function(i){
        <div id="form-block" class="scratch-metal">
 
            <div id="form-viewport">
-
-               <form method="post" action="" id="form-login" class="input-wrapper blue-gradient glossy" title="Connexion">
+               <form method="post" action="index.php?controleur=zoraux_controleurs_login&action=verification" id="form-login" class="input-wrapper blue-gradient glossy" title="Connexion">
                     <ul class="inputs black-input large">
                             <!-- The autocomplete="off" attributes is the only way to prevent webkit browsers from filling the inputs with yellow -->
                             <li><span class="icon-user mid-margin-right"></span><input type="text" name="login" id="login" value="" class="input-unstyled" placeholder="Identifiant" autocomplete="off"></li>
@@ -454,40 +302,6 @@ forms.each(function(i){
                             <input type="checkbox" name="remind" id="remind" value="1" checked="checked" class="switch tiny mid-margin-right with-tooltip" title="Active la connexion automatique">
                             <label for="remind">Se souvenir de moi</label>
                     </p>
-               </form>
-               <form method="post" action="" id="form-password" class="input-wrapper orange-gradient glossy" title="Mot de passe oublié?">
-
-                    <p class="message">
-                            Si vous ne vous souvenez pas de votre mot de passe, renseignez votre adresse mail et un nouveau vous sera envoyé :
-                            <span class="block-arrow"><span></span></span>
-                    </p>
-
-                    <ul class="inputs black-input large">
-                            <li><span class="icon-mail mid-margin-right"></span><input type="email" name="mail" id="mail" value="" class="input-unstyled" placeholder="Votre email" autocomplete="off"></li>
-                    </ul>
-
-                    <button type="submit" class="button glossy full-width" id="send-password">Envoyer</button>
-
-               </form>
-               <form method="post" action="" id="form-register" class="input-wrapper green-gradient glossy" title="Inscription">
-
-                    <p class="message">
-                            Un compte a normalement déjà été créé pour vous, renseignez-vous avant de créer un nouveau compte sur Zoraux. Si toutefois vous décidiez de créer un compte, sachez qu'il sera inactif jusqu'à ce qu'un professeur le valide.
-                            <span class="block-arrow"><span></span></span>
-                    </p>
-
-                    <ul class="inputs black-input large">
-                            <li><span class="icon-card mid-margin-right"></span><input type="text" name="name" id="name-register" value="" class="input-unstyled" placeholder="Votre nom" autocomplete="off"></li>
-                            <li><span class="icon-card mid-margin-right"></span><input type="text" name="secondname" id="secondname-register" value="" class="input-unstyled" placeholder="Votre prénom" autocomplete="off"></li>
-                            <li><span class="icon-mail mid-margin-right"></span><input type="email" name="mail" id="mail-register" value="" class="input-unstyled" placeholder="Votre email" autocomplete="off"></li>
-                    </ul>
-                    <ul class="inputs black-input large">
-                            <li><span class="icon-user mid-margin-right"></span><input type="text" name="login" id="login-register" value="" class="input-unstyled" placeholder="Identifiant" autocomplete="off"></li>
-                            <li><span class="icon-lock mid-margin-right"></span><input type="password" name="pass" id="pass-register" value="" class="input-unstyled" placeholder="Mot de passe" autocomplete="off"></li>
-                    </ul>
-
-                    <button type="submit" class="button glossy full-width" id="send-register">Inscription</button>
-
                </form>
            </div>
        </div>
