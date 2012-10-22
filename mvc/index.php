@@ -34,6 +34,10 @@ $controleur->$action();
 //affichage de la vue
 echo $vue->header();
 $vue->display();
+echo $vue->footerJS();
+if($controleurNom=='zoraux_controleurs_login'){
+    echo $vue->footerLogin();
+}
 echo $vue->footer();
 
 

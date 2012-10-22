@@ -1,0 +1,3 @@
+<?php
+//retour vers l'index
+echo '<meta http-equiv="Refresh" content="0;URL=index.php">';
