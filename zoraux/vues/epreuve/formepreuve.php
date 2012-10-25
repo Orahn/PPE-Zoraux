@@ -17,9 +17,8 @@
     $form->addSelect('classe_id',$classes,array('class'=>'select full-width'),'Classe');
     $form->addSelect('dureePreparation',$temps,array('class'=>'select full-width'),'Temps de préparation');
     $form->addSelect('dureePassage',$temps,array('class'=>'select full-width'),'Temps de passage');
-    //$form->addText('dureePassage',array('class'=>'input'),'Temps de passage');
-    $form->addText('dureeLibre',array('class'=>'input disabled','disabled'=>'disabled','value'=>'10'),'Durée libre avant');
-    $form->addHidden('dureeLibreAvant','10');
+    $form->addText('dureeLibre',array('class'=>'input disabled','disabled'=>'disabled','value'=>'10 min'),'Durée libre avant');
+    $form->addHidden('dureeLibreAvant','00:10:00');
     echo $form->table(array(),'Epreuve (les temps sont exprimés en minutes)');
 ?>
 </center>
