@@ -1,14 +1,17 @@
 <?php
-class MVC_Date extends DateTime{
+class MVC_Date extends DateTime
+{
     /**
      * Constructeur de la classe MVC_Date
      * La date peut-être au format français ou américain
      * @param string $time
      */
-    public function __construct($time){
-        if(stripos($time, '/')){
-            $arrayTime=  explode('/', $time);
-            $time=$arrayTime[2].'-'.$arrayTime[1].'-'.$arrayTime[0];
+    public function __construct($time) {
+        if(stripos($time, '/')) {
+            $arrayDateTime =  explode(' ', $time);
+            $arrayDate =  explode('/', $arrayDateTime[0]);
+            
+            $time = $arrayDate[2].'-'.$arrayDate[1].'-'.$arrayDate[0].' '.$arrayDateTime[1];
         }
         $object=new DateTimeZone('UTC');
         parent::__construct($time, $object);
@@ -26,5 +29,8 @@ class MVC_Date extends DateTime{
      */
     public function getFr(){
         return $this->format('d/m/Y');
+    }
+    public function getTime(){
+        return $this->format('h:i');
     }
 }
