@@ -19,9 +19,9 @@ class Zoraux_Modeles_ClasseEnregistrement extends MVC_ModeleEnregistrement{
      * @return array
      */
     
-    function getEpreuve(){
+    function getEpreuves(){
         $tableEpreuves=new Zoraux_Modeles_Epreuve();
-        $epreuve=$tableEpreuves->get($this->classe_id);
-        return $epreuve;
+        $epreuves=$tableEpreuves->where('classe_id=?',array($this->id));
+        return $epreuves;
     }
 }
