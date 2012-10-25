@@ -5,7 +5,7 @@ class Zoraux_Controleurs_Classe {
     /**
      * Permet de récupérer les informations de l'utilisateur
      */
-    private function informations(){
+    private function informations() {
         if(isset($_SESSION['rang'])){
             if($_SESSION['rang']=='eleve'){
                 $tableEleves = new Zoraux_Modeles_Eleve();
@@ -50,5 +50,4 @@ class Zoraux_Controleurs_Classe {
             $classe->supprimer();
         }
     }
-
 }
