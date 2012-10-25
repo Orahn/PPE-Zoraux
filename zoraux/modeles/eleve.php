@@ -10,17 +10,7 @@ class Zoraux_Modeles_Eleve extends MVC_Modele {
      * @return le contenu d'un eleve par defaut
      */
     function newEleve(){
-        $eleve = new Zoraux_Modeles_EleveEnregistrement();
-        $eleve->id=null;
-        $eleve->nom='';
-        $eleve->prenom='';
-        $eleve->login='';
-        $eleve->password='';
-        $eleve->adresseRue='';
-        $eleve->adresseVille='';
-        $eleve->adresseCP='';
-        $eleve->email='';
-        $eleve->tiersTemps='0';
+        $eleve = $this->newEnregistrement();
         return $eleve;
     }
 }

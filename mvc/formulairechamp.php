@@ -203,11 +203,11 @@ class MVC_FormulaireChamp {
     function labelToString() {
         $html='';
         if ($this->_label != '') {
-            $html.= '<label for="' . $this->getId() . '">';
+            $html.= '<label class="input blue-gradient full-width" style="text-align:center" for="' . $this->getId() . '">';
             if ($this->_required) {
                 $this->_label.=K_Form::CHARACTER_REQUIRED;
             }
-            $html.=$this->_label . ':&nbsp;';
+            $html.=$this->_label . '&nbsp;';
             $html.='</label>';
         } else {
             $html.=$this->_label;
@@ -220,12 +220,13 @@ class MVC_FormulaireChamp {
      * @return string 
      */
     function table() {
-        return '<tr><td>'
+        return '<tr><td style="vertical-align:middle" align="right">'
                 . $this->labelToString()
-                . '</td><td>'
+                . '</td><td style="vertical-align:middle">'
                 . $this->__toString()
-                . '</td></tr>';
+                . '</td></tr><tr><td><br /></td><td></td></tr>';
     }
+    
     /**
      * Permet de générer le HTML pour afficher les champs du formulaire "inline"
      * @return String
