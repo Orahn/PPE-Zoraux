@@ -1,19 +1,10 @@
 <?php
 class Zoraux_Controleurs_Classe {
-<<<<<<< HEAD
-<<<<<<< HEAD
-   
-}
-=======
-
-}
->>>>>>> 272d8326a7ab2121bcf8a51f46c601bc99e5787c
-=======
     
     /**
      * Permet de récupérer les informations de l'utilisateur
      */
-    private function informations(){
+    private function informations() {
         if(isset($_SESSION['rang'])){
             if($_SESSION['rang']=='eleve'){
                 $tableEleves = new Zoraux_Modeles_Eleve();
@@ -59,4 +50,4 @@ class Zoraux_Controleurs_Classe {
         }
     }
 }
->>>>>>> aaaa54478572a69c45f49bd379d83c275894ddfb
+
