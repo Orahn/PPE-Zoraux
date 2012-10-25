@@ -1,5 +1,4 @@
 <?php
-
 class MVC_Modele {
 
     static private $_pdo;
@@ -54,7 +53,7 @@ class MVC_Modele {
      */
     function whereFirst($where,$params){
         $liste=$this->where($where,$params);
-        return $result[0];
+        return $liste[0];
     }
     
     /**
@@ -72,7 +71,7 @@ class MVC_Modele {
      * @return \modele_enregistrement
      */
     function newEnregistrement() {
-        $item = new $this->_modele_enregistrement();
+        $item = new $this->_modeleEnregistrement();
         $item->setTable($this->_table);
         $query='show columns from '.$this->_table;
         $colonnes=$this->pdo()->query($query)->fetchAll(PDO::FETCH_CLASS);

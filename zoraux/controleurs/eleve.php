@@ -1,12 +1,37 @@
 <?php
 
-class Zoraux_Controleurs_Eleves {
+class Zoraux_Controleurs_Eleve {
+    
+    /**
+     * Permet de récupérer les informations de l'utilisateur
+     */
+    private function informations(){
+        if(isset($_SESSION['rang'])){
+            if($_SESSION['rang']=='eleve'){
+                $tableEleves = new Zoraux_Modeles_Eleve();
+                $eleve = $tableEleves->get($_SESSION['id']);
+                $classe = $eleve->getClasse();
+                $epreuves = $classe->getEpreuves();
+                $passages = $eleve->getPassages();
+                $this->vue->utilisateur = $eleve;
+                $this->vue->classe = $classe;
+                $this->vue->epreuves = $epreuves;
+                $this->vue->passages = $passages;
+                $this->vue->rang = $_SESSION['rang'];
+            }elseif($_SESSION['rang']=='professeur'){
+                $tableMembreJurys = new Zoraux_Modeles_MembreJury();
+                $membreJury = $tableMembreJurys->get($_SESSION['id']);
+                $this->vue->utilisateur = $membreJury;
+                $this->vue->rang = $_SESSION['rang'];
+            }
+        }
+    }
     
      /**
      * Formulaire de saisie d'un élève
      */
     function formEleve(){
-        $tableEleves=new Blog_Modeles_Eleve();
+        $tableEleves=new Zoraux_Modeles_Eleve();
         if(isset($_GET['id'])){
             $eleve=$tableEleves->get($_GET['id']);
         }else{
@@ -19,7 +44,7 @@ class Zoraux_Controleurs_Eleves {
      * Enregistrement d'un nouvel élève 
      */
     function enregistrerEleve(){
-        $tableEleves=new Blog_Modeles_Eleve();
+        $tableEleves=new Zoraux_Modeles_Eleve();
         if($_POST['id']==''){
             $eleve=$tableEleves->newEleve();
         }else{
@@ -40,4 +65,5 @@ class Zoraux_Controleurs_Eleves {
             header('Location: ../');
         }
     }
+
 }

@@ -91,7 +91,7 @@ class MVC_Formulaire {
      * @param MVC_FormulaireChamp $field
      * @return MVC_FormulaireChamp
      */
-    private function addField(K_FormField $field) {
+    private function addField(MVC_FormulaireChamp $field) {
         return $this->_fields[$field->getName()] = $field;
     }
 
@@ -279,7 +279,7 @@ class MVC_Formulaire {
      * @param array $attributs
      * @return string 
      */
-    public function table($attributs = array()) {
+    public function table($attributs = array(),$legende='Légende') {
         $html = $this->header();
         $html.=MVC_Formulaire::INDENT ? "\n" : '';
         /* champs cachés */
@@ -287,15 +287,15 @@ class MVC_Formulaire {
             $html.=$hiddenElement;
         }
         /* champs visibles */
-        $html .= '<table' . MVC_Formulaire::attrToHTML($attributs) . '><tbody>';
+        $html .= '<fieldset class="fieldset anthracite-gradient" style="width:500px"><legend class="legend blue-gradient">'.$legende.'</legend><table ' . MVC_Formulaire::attrToHTML($attributs) . '><tbody>';
         $html.=MVC_Formulaire::INDENT ? "\n" : '';
         foreach ($this->_fields as $field) {
             $html.=$field->table();
             $html.=MVC_Formulaire::INDENT ? "\n" : '';
         }
         if ($this->_buttons) {
-            $submit = $this->addSubmit();
-            $reset = $this->addReset();
+            $submit = $this->addSubmit(array('class'=>'button blue-gradient'));
+            $reset = $this->addReset(array('class'=>'button blue-gradient','style'=>'cursor:pointer'));
             $html.='<tr><td colspan="2" align="center">'
                     . $reset
                     . $submit
@@ -304,7 +304,7 @@ class MVC_Formulaire {
             $this->remove($reset);
         }
         $html.=MVC_Formulaire::INDENT ? "\n" : '';
-        $html.='</tbody></table>';
+        $html.='</tbody></table></fieldset>';
         $html.=MVC_Formulaire::INDENT ? "\n" : '';
         $html.=$this->footer();
         return $html;
