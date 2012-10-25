@@ -10,9 +10,14 @@
     foreach($this->classes as $classe){
         $classes[$classe->id]=$classe->libelle;
     }
+    for($i=10;$i<60;$i+=5){
+        $temps['00:'.$i.':00']=$i.' min';
+    }
+    $temps['01:00:00']='1 heure';
     $form->addSelect('classe_id',$classes,array('class'=>'select full-width'),'Classe');
-    $form->addText('dureePreparation',array('class'=>'input'),'Temps de préparation');
-    $form->addText('dureePassage',array('class'=>'input'),'Temps de passage');
+    $form->addSelect('dureePreparation',$temps,array('class'=>'select full-width'),'Temps de préparation');
+    $form->addSelect('dureePassage',$temps,array('class'=>'select full-width'),'Temps de passage');
+    //$form->addText('dureePassage',array('class'=>'input'),'Temps de passage');
     $form->addText('dureeLibre',array('class'=>'input disabled','disabled'=>'disabled','value'=>'10'),'Durée libre avant');
     $form->addHidden('dureeLibreAvant','10');
     echo $form->table(array(),'Epreuve (les temps sont exprimés en minutes)');
