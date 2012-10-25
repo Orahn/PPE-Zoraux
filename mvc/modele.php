@@ -1,5 +1,4 @@
 <?php
-
 class MVC_Modele {
 
     static private $_pdo;

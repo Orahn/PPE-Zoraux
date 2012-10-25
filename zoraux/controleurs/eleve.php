@@ -6,7 +6,7 @@ class Zoraux_Controleurs_Eleves {
      * Formulaire de saisie d'un élève
      */
     function formEleve(){
-        $tableEleves=new Blog_Modeles_Eleve();
+        $tableEleves=new Zoraux_Modeles_Eleve();
         if(isset($_GET['id'])){
             $eleve=$tableEleves->get($_GET['id']);
         }else{
@@ -19,7 +19,7 @@ class Zoraux_Controleurs_Eleves {
      * Enregistrement d'un nouvel élève 
      */
     function enregistrerEleve(){
-        $tableEleves=new Blog_Modeles_Eleve();
+        $tableEleves=new Zoraux_Modeles_Eleve();
         if($_POST['id']==''){
             $eleve=$tableEleves->newEleve();
         }else{
