@@ -12,11 +12,4 @@ class Zoraux_Modeles_MembreJury extends MVC_Modele {
         $membreJury = $this->newEnregistrement();
         return $membreJury;
     }
-    
-    /**
-     * Recupere la liste des membres du jury
-     */
-    function listeMembresJury(){
-        $membresJury=$this->liste();
-    }
 }

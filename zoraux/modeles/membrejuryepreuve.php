@@ -13,19 +13,12 @@ class Zoraux_Modeles_MembreJuryEpreuve extends MVC_Modele {
         return $membreJuryEpreuve;
     }
     /**
-     * Recupere la liste des epreuves
+     * Supprime tous les membres affectes a une epreuve dont l'id est passe en parametre
      */
-    function listeEpreuves(){
-        $tableEpreuves=new Zoraux_Modeles_Epreuve();
-        $epreuves=$tableEpreuves->listeEpreuves();
-        $this->vue->epreuves=$epreuves;
-    }
-    /**
-     * Recupere la liste des membres du jury
-     */
-    function listeMembreJury(){
-        $tableMembresJury=new Zoraux_Modeles_MembreJury();
-        $membresJury=$tableMembresJury->listeMembresJury();
-        $this->vue->membresJury=$membresJury;
+    function supprimerMembreJuryEpreuve($epreuve_id){
+        $membresJury=$this->where('epreuve_id=?',array($epreuve_id));
+        foreach($membresJury as $membreJury){
+            $membreJury->supprimer();
+        }
     }
 }

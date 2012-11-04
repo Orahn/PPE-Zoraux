@@ -23,11 +23,4 @@ class Zoraux_Modeles_Epreuve extends MVC_Modele {
         $epreuves=$this->where('classe_id=?',array($id));
         $this->vue->epreuves=$epreuves;
     }
-    
-    /**
-     * Recupere la liste des epreuves
-     */
-    function listeEpreuves(){
-        $epreuves=$this->liste();
-    }
 }

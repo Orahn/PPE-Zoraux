@@ -630,6 +630,12 @@ class MVC_Vue{
                             '.$this->lien('zoraux_controleurs_epreuve','formEpreuve','Enregistrer une épreuve',array(),array('title'=>'Enregistrer')).'
                         </li>
                         <li>
+                            '.$this->lien('Zoraux_Controleurs_MembreJuryEpreuve','formMembreJuryEpreuve','Affecter des membres du jury à une épreuve',array(),array('title'=>'Affecter des membres du jury')).'
+                        </li>
+                        <li>
+                            '.$this->lien('Zoraux_Controleurs_SalleEpreuve','formSalleEpreuve','Affecter des salles à une épreuve',array(),array('title'=>'Affecter des salles')).'
+                        </li>
+                        <li>
                             '.$this->lien('zoraux_controleurs_accueil','calendrier','Calendrier de mes passages',array(),array('title'=>'Calendrier')).'
                         </li>
                         <li>
