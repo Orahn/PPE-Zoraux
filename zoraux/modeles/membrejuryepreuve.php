@@ -13,7 +13,7 @@ class Zoraux_Modeles_MembreJuryEpreuve extends MVC_Modele {
         return $membreJuryEpreuve;
     }
     /**
-     * Supprime tous les membres affectes a une epreuve dont l'id est passe en parametre
+     * Supprime tous les enregistrements où les membres sont affectes a une epreuve dont l'id est passe en parametre
      */
     function supprimerMembreJuryEpreuve($epreuve_id){
         $membresJury=$this->where('epreuve_id=?',array($epreuve_id));

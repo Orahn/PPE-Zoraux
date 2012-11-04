@@ -1,6 +1,6 @@
 <?php
 
-class Zoraux_Controleurs_MembreJuryEpreuve {
+class Zoraux_Controleurs_SalleEpreuve {
     
     /**
      * Permet de récupérer les informations de l'utilisateur
@@ -31,15 +31,14 @@ class Zoraux_Controleurs_MembreJuryEpreuve {
      * Forme un enregistrement selon s'il s'agit d'un nouveau ou d'une modification
      * (Sert a remplir les champs d'un formulaire, sans devoir faire deux formulaires differents pour une edition ou un ajout)
      */
-    function formMembreJuryEpreuve(){
-        $this->vue->titre = 'Affecter des membres du jury à une épreuve';
-        $tableMembresJuryEpreuve=new Zoraux_Modeles_MembreJuryEpreuve();
-        $membreJuryEpreuve=$tableMembresJuryEpreuve->newMembreJuryEpreuve();
-        $this->vue->membreJuryEpreuve=$membreJuryEpreuve;
+    function formSalleEpreuve(){
+        $this->vue->titre = 'Affecter des salles à une épreuve';
+        $tableSallesEpreuve=new Zoraux_Modeles_SalleEpreuve();
+        $salleEpreuve=$tableSallesEpreuve->newSalleEpreuve();
+        $this->vue->salleEpreuve=$salleEpreuve;
         
-        $tableMembresJury=new Zoraux_Modeles_MembreJury();
-        $this->vue->professeurs=$tableMembresJury->where('professeur=?',array('1'));
-        $this->vue->professionnels=$tableMembresJury->where('professionnel=?',array('1'));
+        $tableSalles=new Zoraux_Modeles_Salle();
+        $this->vue->salles=$tableSalles->liste();
         
         $tableEpreuves=new Zoraux_Modeles_Epreuve();
         $this->vue->epreuves=$tableEpreuves->liste();
@@ -50,22 +49,16 @@ class Zoraux_Controleurs_MembreJuryEpreuve {
     /**
      * Forme un enregistrement d'apres la saisie du formulaire
      */
-    function enregistrerMembreJuryEpreuve(){
+    function enregistrerSalleEpreuve(){
         $this->vue->titre='';
         $this->informations();
-        $tableMembresJuryEpreuve=new Zoraux_Modeles_MembreJuryEpreuve();
-        $tableMembresJuryEpreuve->supprimerMembreJuryEpreuve($_POST['epreuve_id']);
-        foreach($_POST['professeur_id'] as $membreJury_id){
-            $membreJuryEpreuve=$tableMembresJuryEpreuve->newMembreJuryEpreuve();
-            $membreJuryEpreuve->epreuve_id=$_POST['epreuve_id'];
-            $membreJuryEpreuve->membreJury_id=$membreJury_id;
-            $membreJuryEpreuve->enregistrer();
-        }
-        foreach($_POST['professionnel_id'] as $membreJury_id){
-            $membreJuryEpreuve=$tableMembresJuryEpreuve->newMembreJuryEpreuve();
-            $membreJuryEpreuve->epreuve_id=$_POST['epreuve_id'];
-            $membreJuryEpreuve->membreJury_id=$membreJury_id;
-            $membreJuryEpreuve->enregistrer();
+        $tableSalles=new Zoraux_Modeles_SalleEpreuve();
+        $tableSalles->supprimerSalleEpreuve($_POST['epreuve_id']);
+        foreach($_POST['salle_id'] as $salle_id){
+            $salle=$tableSalles->newSalleEpreuve();
+            $salle->epreuve_id=$_POST['epreuve_id'];
+            $salle->salle_id=$salle_id;
+            $salle->enregistrer();
         }
     }
 }
