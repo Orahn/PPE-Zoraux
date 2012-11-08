@@ -198,7 +198,7 @@ class MVC_Vue{
                     botDoor = $(\'<div id="bot-door" class="form-door"><div></div></div>\').appendTo(formViewport),
                     doors = topDoor.add(botDoor),
 
-                    formSwitch = $(\'<div id="form-switch"><span class="button-group"></span></div>\').appendTo(formBlock).children(),
+                    formSwitch = $().appendTo(formBlock).children(),
 
                     hash = (document.location.hash.length > 1) ? document.location.hash.substring(1) : false,
 

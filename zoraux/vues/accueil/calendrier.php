@@ -1,4 +1,5 @@
 <?php
+if (isset($_SESSION['login'])) {    
     echo $this->templateHaut();
 ?>
 <h3>Ceci est un exemple pour l'instant</h3>
@@ -91,3 +92,6 @@
 
 <?php
     echo $this->templateBas();
+} else {
+    echo '<meta http-equiv="Refresh" content="0;URL=index.php">';
+}
