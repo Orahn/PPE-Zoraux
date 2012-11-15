@@ -4,7 +4,7 @@
  */
 class Params_BDD{
     const USER='root';
-    const BDD='zoraux';
+    const BDD='zoraux_test';
     const HOST='127.0.0.1';
     const PWD='pwig';
 }
