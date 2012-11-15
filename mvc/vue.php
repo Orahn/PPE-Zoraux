@@ -84,8 +84,8 @@ class MVC_Vue{
                     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
                     <title>Zoraux</title>
-                    <meta name="description" content="">
-                    <meta name="author" content="">
+                    <meta name="description" content="Application en ligne de gestion des oraux">
+                    <meta name="author" content="Section SIO">
 
                     <!-- http://davidbcalhoun.com/2010/viewport-metatag -->
                     <meta name="HandheldFriendly" content="True">
@@ -538,12 +538,6 @@ class MVC_Vue{
 	<!-- Fin du contenu principal -->
 
 	<!-- Raccourcis de la barre verticale -->
-	<ul id="shortcuts" role="complementary" class="children-tooltip tooltip-right">
-            <li>'.$this->lien('zoraux_controleurs_accueil','principale','Accueil',array(),array('class'=>'shortcut-dashboard','title'=>'Accueil')).'</li>
-            <li>'.$this->lien('zoraux_controleurs_accueil','calendrier','Calendrier',array(),array('class'=>'shortcut-agenda','title'=>'Calendrier')).'</li>
-            <li>'.$this->lien('','','Notes',array(),array('class'=>'shortcut-notes','title'=>'Notes')).'</li>
-	</ul>
-
 	<!-- Menu principal -->
 	<section id="menu" role="complementary">
 
@@ -606,7 +600,7 @@ class MVC_Vue{
             </section>';
         }
         /* Si l'utilisateur est un professeur (membreJury) on affiche un menu différent) */
-        if($this->rang=='professeur'){
+        if($this->rang=='professeur' OR 'administrateur'){
             $menu.= '<section class="navigable">
             <ul class="big-menu">
                 <li class="with-right-arrow">

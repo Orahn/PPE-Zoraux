@@ -20,7 +20,7 @@ class Zoraux_Controleurs_Accueil {
                 $this->vue->epreuves = $epreuves;
                 $this->vue->passages = $passages;
                 $this->vue->rang = $_SESSION['rang'];
-            }elseif($_SESSION['rang']=='professeur'){
+            }elseif($_SESSION['rang']=='professeur' OR 'administrateur'){
                 $tableMembreJurys = new Zoraux_Modeles_MembreJury();
                 $membreJury = $tableMembreJurys->get($_SESSION['id']);
                 $this->vue->utilisateur = $membreJury;
@@ -52,5 +52,11 @@ class Zoraux_Controleurs_Accueil {
         $this->vue->titre = 'Mon compte';
         $this->informations();
     }
-
+    /**
+     * Permet de charger la page de modification du aPropos.
+     */
+    function aPropos(){
+        $this->vue->titre = 'A Propos';
+        $this->informations();
+    }
 }
