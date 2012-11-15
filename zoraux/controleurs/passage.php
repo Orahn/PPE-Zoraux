@@ -31,10 +31,15 @@ class Zoraux_Controleurs_Passage {
      * Permet d'enregistrer une inscription à une épreuve créer un passage qui sera modifié par la suite
      */
     function enregistrerInscription(){
+        
         $this->vue->titre='';
         $this->informations();
         $tablePassages=new Zoraux_Modeles_Passage();
         if(empty($_GET['id'])){
+            if($_GET['idEpreuve']){
+                $_POST['epreuve_id']=$_GET['idEpreuve'];
+                $_POST['eleve_id']=$_SESSION['id'];
+            }
             //Si l'id est vide, c'est un nouveau passage
             $passage=$tablePassages->newPassage();
         }else{

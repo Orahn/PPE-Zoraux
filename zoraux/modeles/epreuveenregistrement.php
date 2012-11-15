@@ -11,16 +11,36 @@ class Zoraux_Modeles_EpreuveEnregistrement extends MVC_ModeleEnregistrement  {
         $classe=$tableClasses->get($this->classe_id);
         return $classe;
     }
+    
     /**
-     * Recupere la liste des epreuves passees par une classe dont l'id est passe en parametre par la methode GET
+     * Retourne les membres de jury affectés à l'épreuve
+     * @return type
      */
-    function listeEpreuvesClasse(){
-        $tableClasses=new Zoraux_Modeles_Classe();
-        $id=$_GET['id'];
-        $classe=$tableClasses->get($id);
-        $this->vue->classe=$classe;
-        $tableEpreuves=new Zoraux_Modeles_Epreuve();
-        $epreuves=$tableEpreuves->where('classe_id=?',array($id));
-        $this->vue->epreuves=$epreuves;
+    function getMembresJury(){
+        $tableMJ = new Zoraux_Modeles_MembreJury();
+        $tableMJE = new Zoraux_Modeles_MembreJuryEpreuve();
+        $membresJury = $tableMJE->where('epreuve_id=?',array($this->id));
+        $membres = array();
+        foreach($membresJury as $m){
+            $membre = $tableMJ->get($m->membreJury_id);
+            array_push($membres,$membre);
+        }
+        return $membres;
+    }
+    
+    /**
+     * Retourne les salles affectées à l'épreuve
+     * @return type
+     */
+    function getSalles(){
+        $tableSE = new Zoraux_Modeles_SalleEpreuve();
+        $tableS = new Zoraux_Modeles_Salle();
+        $salles = $tableSE->where('epreuve_id=?',array($this->id));
+        $sallesAffectees = array();
+        foreach($salles as $s){
+            $salle = $tableS->get($s->id);
+            array_push($sallesAffectees,$salle);
+        }
+        return $sallesAffectees;
     }
 }

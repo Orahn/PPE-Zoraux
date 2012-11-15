@@ -96,8 +96,22 @@ class Zoraux_Controleurs_Epreuve {
         }
     }
     
+    /**
+     * Charge la vue de la liste des épreuves pour une classe
+     */
     function listeEpreuvesClasse(){
         $this->vue->titre = 'Liste des épreuves';
         $this->informations();
+    }
+    
+    /**
+     * Charge la vue de la liste des épreuves complète
+     */
+    function listeEpreuves(){
+        $this->vue->titre = 'Liste des épreuves';
+        $this->informations();
+        $tableEpreuves = new Zoraux_Modeles_Epreuve();
+        $epreuves = $tableEpreuves->liste();
+        $this->vue->epreuves = $epreuves;
     }
 }

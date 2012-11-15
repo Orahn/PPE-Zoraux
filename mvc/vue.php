@@ -584,9 +584,6 @@ class MVC_Vue{
                     <span>Mes épreuves</span>
                     <ul class="big-menu">
                         <li>
-                            '.$this->lien('zoraux_controleurs_epreuve','formInscriptionEpreuve','S\'inscrire à une épreuve',array(),array('title'=>'S\'inscrire')).'
-                        </li>
-                        <li>
                             '.$this->lien('zoraux_controleurs_epreuve','listeEpreuvesClasse','<span class="list-count">'.count($this->epreuves).'</span>Voir les épreuves',array(),array('title'=>'Voir les épreuves')).'
                         </li>
                         <li>
@@ -624,10 +621,16 @@ class MVC_Vue{
                     <span>Gestion des épreuves</span>
                     <ul class="big-menu">
                         <li>
-                            <a href="#" title="Liste">Liste des épreuves par classe</a>
+                            <a href="?controleur=zoraux_controleurs_epreuve&action=listeEpreuves" title="Liste">Liste des épreuves par classe</a>
                         </li>
                         <li>
                             '.$this->lien('zoraux_controleurs_epreuve','formEpreuve','Enregistrer une épreuve',array(),array('title'=>'Enregistrer')).'
+                        </li>
+                        <li>
+                            '.$this->lien('Zoraux_Controleurs_MembreJuryEpreuve','formMembreJuryEpreuve','Affecter des membres du jury à une épreuve',array(),array('title'=>'Affecter des membres du jury')).'
+                        </li>
+                        <li>
+                            '.$this->lien('Zoraux_Controleurs_SalleEpreuve','formSalleEpreuve','Affecter des salles à une épreuve',array(),array('title'=>'Affecter des salles')).'
                         </li>
                         <li>
                             '.$this->lien('zoraux_controleurs_accueil','calendrier','Calendrier de mes passages',array(),array('title'=>'Calendrier')).'

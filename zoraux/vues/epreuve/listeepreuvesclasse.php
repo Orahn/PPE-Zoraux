@@ -28,7 +28,7 @@ foreach($this->passages as $passage){
 /* On construit une ligne de tableau pour chaque épreuve de la classe */
 foreach($this->epreuves as $epreuve){
     echo '<tr>
-                <td>'.$epreuve->libelle.'</th>
+                <td>'.$epreuve->libelle.'</td>
                 <td>'.$epreuve->dureePreparation.'</td>
                 <td>'.$epreuve->dureePassage.'</td>
                 <td>'.$epreuve->dureeLibreAvant.'</td>';
@@ -39,10 +39,10 @@ foreach($this->epreuves as $epreuve){
         echo '<td></td>';
     }
     /* Si l'epreuve existe dans le tableau des id de passages on affiche un bouton pour se désinscrire */
-    if(isset($passages_id[$epreuve->id])){
+    if(isset($passages_id[$epreuve->id])) {
         echo '<td>'.$this->lien('zoraux_controleurs_passage','supprimerPassage','Se désinscrire',array('id'=>$passages_id[$epreuve->id]),array('class'=>'button compact')).'</td></tr>';
     }else{
-        echo '<td></td></tr>';
+        echo '<td>'.$this->lien('zoraux_controleurs_passage','enregistrerInscription','S\'inscrire',array('idEpreuve'=>$epreuve->id),array('class'=>'button compact')).'</td></tr>';
     }  
 }
     echo '</tbody>

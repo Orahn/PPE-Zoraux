@@ -191,7 +191,7 @@ class MVC_FormulaireChamp {
             }
             $html.='<label for="' . $id.'_'.$val. '">';
             $html.='<input  type="checkbox" ' . MVC_Formulaire::attrToHTML($this->_attr) .' id="'.$id.'_'.$val.'" value="' . $val . '"> ';
-            $html.= $label . '</label>';
+            $html.= $label . '</label><br/>';
         }
         return $html;
     }
