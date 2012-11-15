@@ -35,7 +35,7 @@ foreach($this->epreuves as $epreuve){
             echo $s->libelle.'<br/>';
         }
     }
-    echo '</td>';
+    echo '</td></tr>';
 }
 echo '</tbody>
       </table>
