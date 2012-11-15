@@ -1,0 +1,5 @@
+<?php
+define('HEURE_DEBUT_MATIN','08:00');
+define('HEURE_FIN_MATIN','12:00');
+define('HEURE_DEBUT_APRESMIDI','14:00');
+define('HEURE_FIN_APRESMIDI','18:00');

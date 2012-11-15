@@ -110,6 +110,7 @@ class MVC_Vue{
                     <link rel="stylesheet" href="css/styles/switches.css?v=1">
                     <link rel="stylesheet" href="css/styles/agenda.css?v=1">
                     <link rel="stylesheet" href="css/styles/table.css?v=1">
+                    <link rel="stylesheet" href="js/libs/glDatePicker/developr.css?v=1"/>
 
                     <!-- Login pages styles -->
                     <link rel="stylesheet" media="screen" href="css/login.css?v=1">
@@ -175,7 +176,11 @@ class MVC_Vue{
                 <script src="js/developr.navigable.js"></script>
                 <script src="js/developr.calendar.js"></script>
                 <script src="js/developr.agenda.js"></script>
-                <script src="js/developr.table.js"></script>';
+                <script src="js/developr.table.js"></script>
+                <script src="js/libs/glDatePicker/glDatePicker.js?v=1"></script>
+                <script type="text/javascript">$
+                $("#date1,#date2,#date3,#date4").glDatePicker({ zIndex: 100 });
+                </script>';
     }
     
     /**

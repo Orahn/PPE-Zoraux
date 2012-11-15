@@ -70,5 +70,11 @@ class Zoraux_Modeles_EpreuveEnregistrement extends MVC_ModeleEnregistrement {
         $tablePassages = new Zoraux_Modeles_Passage();
         return $tablePassages->where('epreuve_id=?', array($this->id));
     }
+    
+    function getDates(){
+        $tableDates = new Zoraux_Modeles_EpreuveDate();
+        $dates = $tableDates->where('epreuve_id',array($this->id));
+        return $dates;
+    }
 
 }

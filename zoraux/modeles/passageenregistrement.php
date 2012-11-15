@@ -96,6 +96,33 @@ class Zoraux_Modeles_PassageEnregistrement extends MVC_ModeleEnregistrement  {
     }
     function affecterHeurePassage(){
         $epreuve=$this->getEpreuve();
-        
+        $dates=$epreuve->getDates();
+        $i=0;
+        $affecte=false;
+        $debut=strtotime($dates[0].' '.HEURE_DEBUT_MATIN);
+        $dureePassage=explode(':',$epreuve->dureePassage);
+        $duree=$dureePassage[0]*3600+$dureePassage[1]*60+$dureePassage[2];
+        $passagesEleve=$this->getEleve()->getPassages();
+        $passagesJury=$this->getJury()->getPassages();
+        $passagesSalle=$this->getSalle()->getpassages();
+        while(!$affecte){
+            $this->heurePassage=date('H:i:s',$debut);
+            $this->date=date('Y-m-d',$debut);
+            $eleveOccupe=false;
+            foreach($passagesEleve as $p){
+                $eleveOccupe=$eleveOccupe or $this->estEnParallele($p);                
+            }
+            $juryOccupe=false;
+            foreach($passagesJury as $p){
+                $juryOccupe=$juryOccupe or $this->estEnParallele($p);
+            }
+            $salleOccupee=false;
+            foreach($passagesSalle as $p){
+                $salleOccupee=$salleOccupee or $this->estEnParallele($p);
+            }
+            $affecte=!$eleveOccupe and !$juryOccupe and !$salleOccupee;
+            
+            $debut+=$duree;
+        }
     }
 }

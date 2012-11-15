@@ -20,9 +20,13 @@
     //$form->addText('dureePreparation',array('class'=>'input'),'Temps de préparation');
     $form->addSelect('dureePassage',$temps,array('class'=>'select full-width'),'Temps de passage');
     //$form->addText('dureePassage',array('class'=>'input'),'Temps de passage');
-    $form->addText('dureeLibre',array('class'=>'input disabled','disabled'=>'disabled','value'=>'10'),'Durée libre avant');
+    $form->addText('dureeLibre',array('class'=>'input','value'=>'00:10:00'),'Durée libre avant');
+    $form->addText('date1',array('class'=>'input datepicker','id'=>'date1'),'Date 1');
+    $form->addText('date2',array('class'=>'input datepicker','id'=>'date2'),'Date 2');
+    $form->addText('date3',array('class'=>'input datepicker','id'=>'date3'),'Date 3');
+    $form->addText('date4',array('class'=>'input datepicker','id'=>'date4'),'Date 4');
     $form->addHidden('dureeLibreAvant','10');
-    echo $form->table(array(),'Epreuve (les temps sont exprimés en minutes)');
+    echo $form->table(array(),'Epreuve (les temps sont au format hh:mm:ss)');
 ?>
 </center>
 <?php

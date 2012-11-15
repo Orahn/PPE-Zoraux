@@ -4,5 +4,6 @@ session_start();
     ini_set('display_errors','1');
     include('./params/params_chemins.php');
     include('./params/params_bdd.php');
+    include('./params/params_constantes.php');
     include(Params_Chemins::MVC.'index.php');
 ?>
