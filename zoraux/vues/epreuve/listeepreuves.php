@@ -1,10 +1,7 @@
 <?php
 echo $this->templateHaut();
 /* On définit les headers de la table */
-echo '<div class="table-header blue-gradient button-height">
-        <div class="float-right">
-		Search&nbsp;<input type="text" name="table_search" id="table_search" value="" class="input mid-margin-left">
-	</div>
+echo '<div class="table-header blue-gradient">
         </div>
         <div class="table">
         <table class="table" style="background-color:white;color:black">
@@ -14,13 +11,15 @@ echo '<div class="table-header blue-gradient button-height">
 			<th scope="col">Epreuve</th>
 			<th scope="col">Membres de Jury affectés</th>
                         <th scope="col">Salles affectées</th>
+                        <th scope="col">Passages</th>
+                        <th></th>
 		</tr>
 	</thead>
         <tbody>';
 foreach($this->epreuves as $epreuve){
     $classeA = $epreuve->getClasse();
-    @$membresA = $epreuve->getMembresJury();
-    @$sallesA = $epreuve->getSalles();
+    $membresA = $epreuve->getMembresJury();
+    $sallesA = $epreuve->getSalles();
     echo '<tr><td>'.$classeA->libelle.'</td>';
     echo '<td>'.$epreuve->libelle.'</td>';
     echo '<td>';
@@ -35,6 +34,17 @@ foreach($this->epreuves as $epreuve){
             echo $s->libelle.'<br/>';
         }
     }
+    echo '</td><td>';
+    $passages=$epreuve->getPassages();
+    $nbPassagesComplets=0;
+    foreach($passages as $p){
+        if($p->estComplet()){
+            $nbPassagesComplets++;
+        }
+    }
+    echo sizeof($passages),' (',$nbPassagesComplets,' complets)';
+    echo '</td><td>';
+    echo $this->lien('Zoraux_controleurs_affectation','affecter','Affecter',array('epreuve_id'=>$epreuve->id));
     echo '</td></tr>';
 }
 echo '</tbody>

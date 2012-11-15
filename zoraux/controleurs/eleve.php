@@ -18,7 +18,7 @@ class Zoraux_Controleurs_Eleve {
                 $this->vue->epreuves = $epreuves;
                 $this->vue->passages = $passages;
                 $this->vue->rang = $_SESSION['rang'];
-            }elseif($_SESSION['rang']=='professeur'){
+            }elseif($_SESSION['rang']=='professeur' || $_SESSION['rang']=='administrateur'){
                 $tableMembreJurys = new Zoraux_Modeles_MembreJury();
                 $membreJury = $tableMembreJurys->get($_SESSION['id']);
                 $this->vue->utilisateur = $membreJury;

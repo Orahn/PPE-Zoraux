@@ -7,13 +7,15 @@ class Zoraux_Modeles_ClasseEnregistrement extends MVC_ModeleEnregistrement{
      * Permet de recuperer les eleves d'une classe
      * @return array
      */
-    
     function getEleve(){
         $tableEleves=new Zoraux_Modeles_Eleve();
-        $eleve=$tableEleves->get($this->classe_id);
+        $eleve=$tableEleves->where('classe_id=?',array($this->id));
         return $eleve;
     }
-    
+    function nbEleves(){
+        return sizeof($this->getEleve());
+    }
+     
     /**
      * Permet de recuperer les epreuves d'une classe
      * @return array
@@ -24,4 +26,5 @@ class Zoraux_Modeles_ClasseEnregistrement extends MVC_ModeleEnregistrement{
         $epreuves=$tableEpreuves->where('classe_id=?',array($this->id));
         return $epreuves;
     }
+    
 }

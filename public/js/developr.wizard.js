@@ -389,7 +389,7 @@
 		 * Previous button markup - must use class 'wizard-prev'
 		 * @var string
 		 */
-		controlPrev: '<button type="button" class="button glossy mid-margin-right wizard-previous float-left"><span class="button-icon anthracite-gradient"><span class="icon-backward"></span></span>Back</button>',
+		controlPrev: '<button type="button" class="button glossy mid-margin-right wizard-previous float-left"><span class="button-icon anthracite-gradient"><span class="icon-backward"></span></span>Retour</button>',
 
 		/**
 		 * Next button markup - must use class 'wizard-next'

@@ -135,7 +135,7 @@
 			// Create back button if needed
 			if (back.length === 0)
 			{
-				back = $('<span class="tabs-back with-left-arrow top-bevel-on-light dark-text-bevel">Back</span>').prependTo(tabsContent).click(function(event)
+				back = $('<span class="tabs-back with-left-arrow top-bevel-on-light dark-text-bevel">Retour</span>').prependTo(tabsContent).click(function(event)
 				{
 					// If the currently open tab contains a inner-tabs group
 					var innerTabs = tabsContent.children('.tab-active:first').children('.inner-tabs.tab-opened'),

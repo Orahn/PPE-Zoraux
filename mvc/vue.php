@@ -84,8 +84,8 @@ class MVC_Vue{
                     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
                     <title>Zoraux</title>
-                    <meta name="description" content="">
-                    <meta name="author" content="">
+                    <meta name="description" content="Application en ligne de gestion des oraux">
+                    <meta name="author" content="Section SIO">
 
                     <!-- http://davidbcalhoun.com/2010/viewport-metatag -->
                     <meta name="HandheldFriendly" content="True">
@@ -535,14 +535,6 @@ class MVC_Vue{
         $menu = '</div>
 
 	</section>
-	<!-- Fin du contenu principal -->
-
-	<!-- Raccourcis de la barre verticale -->
-	<ul id="shortcuts" role="complementary" class="children-tooltip tooltip-right">
-            <li>'.$this->lien('zoraux_controleurs_accueil','principale','Accueil',array(),array('class'=>'shortcut-dashboard','title'=>'Accueil')).'</li>
-            <li>'.$this->lien('zoraux_controleurs_accueil','calendrier','Calendrier',array(),array('class'=>'shortcut-agenda','title'=>'Calendrier')).'</li>
-            <li>'.$this->lien('','','Notes',array(),array('class'=>'shortcut-notes','title'=>'Notes')).'</li>
-	</ul>
 
 	<!-- Menu principal -->
 	<section id="menu" role="complementary">
@@ -561,9 +553,6 @@ class MVC_Vue{
 
 			<ul id="access" class="children-tooltip">
 				<li>
-                                    '.$this->lien('','','<span class="icon-gear"></span>',array(),array('title'=>'Paramètres')).'
-				</li>
-				<li>
                                     '.$this->lien('zoraux_controleurs_accueil','monCompte','<span class="icon-user"></span>',array(),array('title'=>'Mon compte')).'
 				</li>
                                 <li>
@@ -575,10 +564,7 @@ class MVC_Vue{
 			</ul>';
         /* Si l'utilisateur est un élève, on affiche le menu des élèves */
         if($this->rang=='eleve'){
-            $menu.= '<ul class="title-menu">
-                        <li>Menu principal '.$this->classe->libelle.'</li>
-                    </ul>
-                    <section class="navigable">
+            $menu.= '<section class="navigable">
                     <ul class="big-menu">
                     <li class="with-right-arrow">
                     <span>Mes épreuves</span>
@@ -591,32 +577,13 @@ class MVC_Vue{
                         </li>
                     </ul>
                 </li>
-                <li class="with-right-arrow">
-                    <span>Ma classe</span>
-                    <ul class="big-menu">
-                        <li>
-                            <a href="#" title="Liste">Voir élèves & professeurs</a>
-                        </li>
-                    </ul>
-                </li>
             </ul
             </section>';
         }
         /* Si l'utilisateur est un professeur (membreJury) on affiche un menu différent) */
-        if($this->rang=='professeur'){
+        if($this->rang=='professeur' || $this->rang=='administrateur'){
             $menu.= '<section class="navigable">
             <ul class="big-menu">
-                <li class="with-right-arrow">
-                    <span>Gestion des élèves</span>
-                    <ul class="big-menu">
-                        <li>
-                            <a href="#" title="Liste">Liste des élèves</a>
-                        </li>
-                        <li>
-                            <a href="#" title="Enregistrer">Enregistrer un nouvel élève</a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="with-right-arrow">
                     <span>Gestion des épreuves</span>
                     <ul class="big-menu">
@@ -637,14 +604,6 @@ class MVC_Vue{
                         </li>
                         <li>
                             <a href="#" title="Liste">Liste des jury</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="with-right-arrow">
-                    <span>Mes classes</span>
-                    <ul class="big-menu">
-                        <li>
-                            <a href="#" title="Liste">Voir mes classes</a>
                         </li>
                     </ul>
                 </li>

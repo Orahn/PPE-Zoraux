@@ -82,7 +82,7 @@
 		if (back.length === 0)
 		{
 			// Create element
-			back = $('<div class="back"><span class="back-arrow"></span>Back</div>').prependTo(root).click(function(event)
+			back = $('<div class="back"><span class="back-arrow"></span>Retour</div>').prependTo(root).click(function(event)
 			{
 				var current = root.data('navigableCurrent'),
 					target, left, backHeight;

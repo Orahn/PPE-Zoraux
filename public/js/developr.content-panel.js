@@ -161,7 +161,7 @@
 				loadTarget = panelContent.children('.panel-load-target:first');
 
 				// Create back button
-				back = $('<div class="back"><span class="back-arrow"></span>Back</div>');
+				back = $('<div class="back"><span class="back-arrow"></span>Retour</div>');
 				if (loadTarget.length)
 				{
 					back.insertBefore(loadTarget);
